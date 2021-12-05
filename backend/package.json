@@ -1,7 +1,7 @@
 {
     "name": "primeiro_programa_nodejs",
     "version": "1.0.0",
-    "description": "Programa de cadastro",
+    "description": "Sistema de cadastro",
     "main": "index.js",
     "scripts": {
         "start": "nodemon src/index.js"
