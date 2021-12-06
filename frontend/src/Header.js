@@ -1,10 +1,17 @@
-import React,{Fragment} from "react";
+import React, {useState} from 'react';
 
-export default function Header(props){
-    return(
-        <Fragment>
-            <h2>Estudante de promagração de sistemas {props.title}</h2>
-            <h5>React JS</h5>
-        </Fragment>
-    );
+function Header() {
+  const [contador, setContador] = useState(0)
+
+  function incrementar(){
+      setContador(contador + 1)
+  }
+
+  return (
+   <div>
+     <h1>Contador:{contador}</h1>
+     <button onClick={incrementar}>Contar</button>
+   </div>
+  );
 }
+export default Header
