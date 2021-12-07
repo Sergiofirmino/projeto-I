@@ -1,9 +1,11 @@
 import React from 'react';
-import Header from './Header';
+import Rotas from './rotas'
+
+import './global.css'
 
 function App() {
   return (
-     <Header/>
+   <Rotas />
   );
 }
 
