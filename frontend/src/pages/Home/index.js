@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Logo from '../../assets/img/logo-loja.jpg'
+import Logo from '../../assets/img/ecommerce.png'
 
 import './style.css'
 
@@ -11,7 +11,7 @@ export default function Home(){
                 <h1>Software de Gestão Comercial</h1>
             </section>
             <section className="logo-container">
-                <img src={Logo} alt="Logomarca da loja"/>
+                <img src={Logo} alt="Ecommerce"/>
             </section>
         </div>
     )
