@@ -1,16 +1,25 @@
+
 .novo-cliente-container{
     display: flex;
     flex: 1;
     flex-direction: column;
-    align-items: center;
+   
+    
 }
-
-.novo-cliente-container h1{
-    margin-top:100px;
+.content{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+.form-cadastro-cliente h1{
+   
     font-size: 16px;
     line-height: 30px;
     letter-spacing: 3px;
-    color: rgb(255,255,255)
+    color: rgb(255,255,255);
+    text-align: center;
+    margin-bottom: 40px;
 }
 
 span{
@@ -19,16 +28,54 @@ span{
 }
 
 .cliente-form{
-    margin:10px 11% 0 11%;
-    padding: 15px;
+    margin:10px 10% 0 10%;
+    padding: 15px 0%;
+    max-width: 750px;
+    height: 500px;
     border: 1px solid rgb(255,255,255);
+    box-shadow:5px 5px 5px;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+    
+}
+
+.cliente-form section{
+    margin-top: 150px;
 }
 
 .cliente-form input{
     font-family: 'Open-sans', sans-serif;
-    margin-right: 11%;
+    font-size: 15px;
+    margin-right: 2%;
     margin-bottom: 10px;
     border:none;
     padding: 2px 5px;
     border-radius: 5px;
+    height: 40px;
+    width: 300px;
+    
 }
+.logo-carrinho-compras{
+width:5%;
+height: 60%;
+margin-right: 5%;
+
+}
+
+.icon{
+    margin-top:85px;
+    margin-left: 30px;
+}
+
+.form-cadastro-cliente{
+    width: 70%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+ 

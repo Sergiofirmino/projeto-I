@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
+import api from '../../../services/api'
+import {FiArrowLeftCircle} from "react-icons/fi";
+import {Link,useNavigate} from 'react-router-dom'
 
 import './style.css'
+
+import CarrinhoCompras from '../../../assets/img/carrinho_de_compra.png'
 
 export default function NovoCliente() {
 
@@ -8,93 +13,109 @@ export default function NovoCliente() {
     const [sobrenome, setSobrenome] = useState('')
     const [cpf, setCpf] = useState('')
     const [sexo, setSexo] = useState('')
-    const [Endereco, setEndereco] = useState('')
-    const [Cidade, setCidade] = useState('')
-    const [Uf, setUf] = useState('')
-    const [Email, setEmail] = useState('')
-    const [Celular, setCelular] = useState('')
+    const [endereco, setEndereco] = useState('')
+    const [cidade, setCidade] = useState('')
+    const [uf, setUf] = useState('')
+    const [email, setEmail] = useState('')
+    const [celular, setCelular] = useState('')
+
+    const navegacao = useNavigate();
+    
+   async function executarCadastro(e){
+        e.preventDefault();
+
+        const data = {
+            nome, sobrenome, cpf, sexo, endereco, cidade, uf, email, celular
+        }
+        try{
+           const response = await api.post('/cliente/cadastro', data)
+           alert(`Cadastro realizado com sucesso e seu id de acesso é ${response.data}`)
+
+           navegacao('/')
+        }catch (error){
+            alert('Erro ao tentar cadastrar, tente novamente.')
+        }
+       
+        
+    }
 
     return (
         <div className="novo-cliente-container">
-            <section className="titulo-cadastro-cliente">
-                <h1>Cadastro de clientes</h1>
-            </section>
+            <div className="content">
+                
             <section className="cliente-form">
-                <form action="">
-                    <label>
-                        <span>Nome</span>
+                <section className="logo-carrinho-compras"> 
+                    <img src={CarrinhoCompras} alt="Carrinho de compras"/>
+                    <Link to="/"><FiArrowLeftCircle className="icon" size={30} color="#e02041"/></Link>
+                    
+                </section>
+                <section className="form-cadastro-cliente">
+                    <h1>Cadastro de clientes</h1>
+                
+                <form onSubmit={executarCadastro}>
+                   
                         <input
+                            type="text"
+                            placeholder="Digite seu Nome"
                             value={nome}
-                            onChange={e => setNome(e.target.value)}
-                        />
-                    </label>
-
-                    <label>
-                        <span>Sobrenome</span>
+                            onChange={e => setNome(e.target.value)} style={{width:'170px'}}/>
+                       
+   
                         <input
+                            type="text"
+                            placeholder="Digite seu Sobrenome"
                             value={sobrenome}
-                            onChange={e => setSobrenome(e.target.value)}
-                        />
-                    </label>
+                            onChange={e => setSobrenome(e.target.value)}/>
 
-                    <label htmlFor="cpf">
-                        <span>CPF</span>
                         <input
+                            type="text"
+                            placeholder="Digite seu CPF"
                             value={cpf}
-                            onChange={e => setCpf(e.target.value)}
-                        />
-                    </label>
-
-                    <label>
-                        <span>Sexo</span>
+                            onChange={e => setCpf(e.target.value)}/>
+                       
+                        
                         <input
+                            type="text"
+                            placeholder="Sexo"
                             value={sexo}
-                            onChange={e => setSexo(e.target.value)}
-                        />
-                    </label>
+                            onChange={e => setSexo(e.target.value)} style={{width:'170px'}} />
 
-                    <label>
-                        <span>Endereco</span>
                         <input
-                            value={Endereco}
-                            onChange={e => setEndereco(e.target.value)}
-                        />
-                    </label>
+                            type="text"
+                            placeholder="Endereço"
+                            value={endereco}
+                            onChange={e => setEndereco(e.target.value)} style={{width:'481px'}}/>  <br/>
 
-                    <label>
-                        <span>Cidade</span>
                         <input
-                            value={Cidade}
-                            onChange={e => setCidade(e.target.value)}
-                        />
-                    </label>
+                            type="text"
+                            placeholder="Cidade"
+                            value={cidade}
+                            onChange={e => setCidade(e.target.value)} />   
 
-                    <label>
-                        <span>Uf</span>
                         <input
-                            value={Uf}
-                            onChange={e => setUf(e.target.value)}
-                        />
-                    </label>
-                    <label>
-                        <span>Email</span>
-                        <input
-                            value={Email}
-                            onChange={e => setEmail(e.target.value)}
-                        />
-                    </label>
+                            type="text"
+                            placeholder="UF"
+                            value={uf}
+                            onChange={e => setUf(e.target.value)} style={{width:'170px'}} />  
 
-                    <label>
-                        <span>Celular</span>
                         <input
-                            value={Celular}
-                            onChange={e => setCelular(e.target.value)}
-                        />
-                    </label>
+                            type="email"
+                            placeholder="E-mail"
+                            value={email}
+                            onChange={e => setEmail(e.target.value)} />
+
+                        <input
+                            type="text"
+                            placeholder="Celular"
+                            value={celular}
+                            onChange={e => setCelular(e.target.value)} style={{width:'170px'}} />   
+
+                        <button className="button">Cadastrar</button>      
                 </form>
 
-
+                </section>
             </section>
+            </div>
         </div>
     )
 }

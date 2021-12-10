@@ -3,11 +3,23 @@ const conexao = require('../database/connection');
 module.exports = {
 
     async cadastrar(request, response) {
-        const dadosCadastro = request.body
-    
-        const resultado = await conexao('produtos').insert(dadosCadastro)
+        const { nome, categoria, preco, estoque, unidade, marca, descricao } = request.body
 
-        return response.status(201).send()
+        try {
+            await conexao('produtos').insert({
+                nome,
+                categoria,
+                preco,
+                estoque,
+                unidade,
+                marca,
+                descricao
+            });
+
+            return response.status(201).send()
+        } catch (error) {
+            return response.status(406).json(error)
+        }
     },
 
     async listar(request, response) {
